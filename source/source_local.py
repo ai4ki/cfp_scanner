@@ -31,7 +31,7 @@ openai.api_key = OPENAI_API_KEY
 device = "cpu"
 
 # GeckoDriver location
-driver_path = os.path.join(os.getcwd(), "assets/firefox")
+driver_path = "./assets/firefox"
 
 # URL of HAD site
 HAD_URL = 'https://www.had.de/onlinesuche_einfach.html'
