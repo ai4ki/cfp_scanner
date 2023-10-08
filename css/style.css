@@ -1,0 +1,80 @@
+.appview-container .main .block-container {
+    padding-top: 70px;
+}
+
+a:link {
+    color: #007cbf;
+    text-decoration: none;
+}
+
+div {
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    color: #eaeaea !important;
+}
+
+h4, h5 {
+    color: #00adb5 !important;
+}
+
+h6 {
+    color: #007cbf; !important;
+    font-weight: normal !important;
+}
+
+input {
+    background: #0b4358 !important;
+    border: 1px solid #00adb5;
+    border-radius: 3px;
+    color: #00adb5;
+}
+
+[data-testid="stHeader"]::before {
+                content: "ai4ki";
+                font-family: Arial, sans-serif;
+                font-weight: bold;
+                font-size: 40px;
+                color: #0f5670;
+                position: relative;
+                left: 80px;
+                top: -5px;
+                background: linear-gradient(90deg, #0b4358, #0d4861, #114c6b, #155174, #19557d, #1d5986, #215d8f, #256198, #063147);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                -webkit-animation: rainbow 20s ease infinite;
+                -moz-animation: rainbow 20s ease infinite;
+                -o-animation: rainbow 20s ease infinite;
+                animation: rainbow 20s ease infinite;
+                background-size: 300% 100%;
+}
+
+[data-testid="stHeader"] {
+    background-color: rgba(11,67,88,1.0);
+    height: 50px;
+}
+
+@-webkit-keyframes rainbow {
+    0% {background-position: 0% 82%;}
+    50% {background-position: 100% 19%;}
+    100% {background-position: 0% 82%;}
+}
+
+@-o-keyframes rainbow {
+    0% {background-position: 0% 82%;}
+    50% {background-position: 100% 19%;}
+    100% {background-position: 0% 82%;}
+}
+
+@-moz-keyframes rainbow {
+    0% {background-position: 0% 82%;}
+    50% {background-position: 100% 19%;}
+    100% {background-position: 0% 82%;}
+}
+
+@keyframes rainbow {
+    0% {background-position: 0% 82%;}
+    50% {background-position: 100% 19%;}
+    100% {background-position: 0% 82%;}
+}
