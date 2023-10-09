@@ -15,7 +15,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select, WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.firefox.options import Options
-from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.common.exceptions import TimeoutException
 from sentence_transformers import SentenceTransformer
 
@@ -110,18 +109,12 @@ def get_had_table(days):
     """
 
     had_table_filtered = pd.DataFrame()
-
-    print("INFO: Loading driver...")
+    
     options = Options()
     options.add_argument("--headless")
-    driver = webdriver.Remote(
-        command_executor='http://localhost:4444/wd/hub',
-        desired_capabilities=DesiredCapabilities.FIREFOX,
-        options=options
-    )
-    print("INFO: Driver loaded...")
+    driver = webdriver.Firefox(options=options)
+    driver.implicitly_wait(30)
     driver.get(HAD_URL)
-    print("INFO: Website accessed...")
 
     select_element = Select(driver.find_element(By.NAME, "L_CAT"))
     select_element.select_by_value("SQLB")
@@ -135,7 +128,6 @@ def get_had_table(days):
     wait = WebDriverWait(driver, 10)
 
     try:
-        print("INFO: Scraping website...")
         content = wait.until(EC.presence_of_element_located((By.TAG_NAME, "table")))
         table_html = content.get_attribute('outerHTML')
         pattern = r'<div class="small">.*?</div>'  # because it scrambles table
