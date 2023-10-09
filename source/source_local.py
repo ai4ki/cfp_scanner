@@ -15,6 +15,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select, WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.common.exceptions import TimeoutException
 from sentence_transformers import SentenceTransformer
 
@@ -115,7 +116,11 @@ def get_had_table(days):
 
     options = Options()
     options.add_argument("--headless")
-    driver = webdriver.Firefox(driver_path, options=options)
+    driver = webdriver.Remote(
+        command_executor='http://localhost:4444/wd/hub',
+        desired_capabilities=DesiredCapabilities.FIREFOX,
+        options=options
+    )
     driver.get(HAD_URL)
 
     select_element = Select(driver.find_element(By.NAME, "L_CAT"))
