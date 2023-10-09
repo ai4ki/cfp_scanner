@@ -111,6 +111,7 @@ def get_had_table(days):
 
     had_table_filtered = pd.DataFrame()
 
+    print("INFO: Loading driver...")
     options = Options()
     options.add_argument("--headless")
     driver = webdriver.Remote(
@@ -118,7 +119,9 @@ def get_had_table(days):
         desired_capabilities=DesiredCapabilities.FIREFOX,
         options=options
     )
+    print("INFO: Driver loaded...")
     driver.get(HAD_URL)
+    print("INFO: Website accessed...")
 
     select_element = Select(driver.find_element(By.NAME, "L_CAT"))
     select_element.select_by_value("SQLB")
@@ -132,6 +135,7 @@ def get_had_table(days):
     wait = WebDriverWait(driver, 10)
 
     try:
+        print("INFO: Scraping website...")
         content = wait.until(EC.presence_of_element_located((By.TAG_NAME, "table")))
         table_html = content.get_attribute('outerHTML')
         pattern = r'<div class="small">.*?</div>'  # because it scrambles table
