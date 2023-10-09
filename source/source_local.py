@@ -31,9 +31,6 @@ openai.api_key = OPENAI_API_KEY
 # Set device for sentence transformer inference
 device = "cpu"
 
-# GeckoDriver location
-driver_path = "./assets/firefox"
-
 # URL of HAD site
 HAD_URL = 'https://www.had.de/onlinesuche_einfach.html'
 
