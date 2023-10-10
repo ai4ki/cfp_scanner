@@ -30,6 +30,9 @@ openai.api_key = OPENAI_API_KEY
 # Set device for sentence transformer inference
 device = "cpu"
 
+# Gekcodriver location
+driver_path = os.path.join(os.getcwd(), "assets/firefox")
+
 # URL of HAD site
 HAD_URL = 'https://www.had.de/onlinesuche_einfach.html'
 
@@ -112,8 +115,7 @@ def get_had_table(days):
     
     options = Options()
     options.add_argument("--headless")
-    driver = webdriver.Firefox(options=options)
-    driver.implicitly_wait(30)
+    driver = webdriver.Firefox(driver_path, options=options)
     driver.get(HAD_URL)
 
     select_element = Select(driver.find_element(By.NAME, "L_CAT"))
